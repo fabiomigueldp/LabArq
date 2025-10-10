@@ -1,0 +1,53 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow Model Setup 'clock48MHz'
+Slack : -15.867
+TNS   : -248.029
+
+Type  : Slow Model Setup 'clockPB'
+Slack : -13.518
+TNS   : -12051.664
+
+Type  : Slow Model Hold 'clock48MHz'
+Slack : 0.391
+TNS   : 0.000
+
+Type  : Slow Model Hold 'clockPB'
+Slack : 0.527
+TNS   : 0.000
+
+Type  : Slow Model Minimum Pulse Width 'clockPB'
+Slack : -1.423
+TNS   : -1046.758
+
+Type  : Slow Model Minimum Pulse Width 'clock48MHz'
+Slack : -1.380
+TNS   : -61.380
+
+Type  : Fast Model Setup 'clock48MHz'
+Slack : -7.113
+TNS   : -85.865
+
+Type  : Fast Model Setup 'clockPB'
+Slack : -6.243
+TNS   : -5483.559
+
+Type  : Fast Model Hold 'clock48MHz'
+Slack : 0.215
+TNS   : 0.000
+
+Type  : Fast Model Hold 'clockPB'
+Slack : 0.241
+TNS   : 0.000
+
+Type  : Fast Model Minimum Pulse Width 'clockPB'
+Slack : -1.423
+TNS   : -1046.758
+
+Type  : Fast Model Minimum Pulse Width 'clock48MHz'
+Slack : -1.380
+TNS   : -61.380
+
+------------------------------------------------------------
