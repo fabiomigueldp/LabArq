@@ -167,7 +167,7 @@ BEGIN
   DMEM: dmemory
   PORT MAP(
     read_data  => DataMemOut,
-    address    => ALUResult(7 DOWNTO 0),
+    address    => ALUResult(9 DOWNTO 2),  -- Divide por 4: usa bits [9:2] para converter bytes em palavras
     write_data => readData2,
     Memwrite   => MemWrite,
     clock      => clock,

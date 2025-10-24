@@ -1,6 +1,10 @@
 # ===========================
 # Project Specific
 # ===========================
+# Ignorar arquivos Markdown exceto README.md
+*.md
+!README.md
+
 # Ignorar scanner.py em qualquer lugar do projeto
 **/scanner.py
 scanner.py
