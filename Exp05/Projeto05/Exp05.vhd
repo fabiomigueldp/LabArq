@@ -176,7 +176,7 @@ BEGIN
   DMEM: dmemory
   PORT MAP(
     read_data  => DataMemOut,
-    address    => ALUResult(7 DOWNTO 0),
+    address    => ALUResult(9 DOWNTO 2),
     write_data => readData2,
     Memwrite   => MemWrite,
     clock      => clock,
