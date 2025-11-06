@@ -45,7 +45,7 @@ BEGIN
 		clock0		=> clock); -- sinal de clock da memoria
 	
 	-- Descricao do somador (soma 1 palavra)
-	Memaddr <= Next_PC(9 downto 2);
+	Memaddr <= PC(9 downto 2);  -- Corrigido: deve usar PC atual, não Next_PC
 	PC_OUT <= PC(9 downto 2);
 	Instruction <= instr;
 	PC_INC <= PC + 4;

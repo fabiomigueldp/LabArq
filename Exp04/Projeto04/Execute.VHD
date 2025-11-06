@@ -17,6 +17,7 @@ END Execute;
 
 ARCHITECTURE behavior OF Execute IS
 	SIGNAL B : STD_LOGIC_VECTOR(31 DOWNTO 0);
+	SIGNAL Shift_extend : STD_LOGIC_VECTOR(31 DOWNTO 0);
 BEGIN
 	-- MUX para selecionar B (Read_data_2 ou Sign_extend)
 	B <= Read_data_2 WHEN ALUSrc = '0' ELSE Sign_extend;
@@ -27,7 +28,11 @@ BEGIN
 	-- Comparação para BEQ: Zero = 1 quando Read_data_1 == Read_data_2
 	Zero <= '1' WHEN Read_data_1 = Read_data_2 ELSE '0';
 	
-	-- Soma para cálculo do endereço de desvio: PCInc + Sign_extend
-	ADDResult <= PCInc + Sign_extend;
+	-- Shift left do offset por 2 bits (multiplica por 4)
+	-- No MIPS, o offset do branch é em palavras, então deve ser convertido para bytes
+	Shift_extend <= Sign_extend(29 downto 0) & "00";
+	
+	-- Soma para cálculo do endereço de desvio: PCInc + (offset << 2)
+	ADDResult <= PCInc + Shift_extend;
 END behavior;
 
