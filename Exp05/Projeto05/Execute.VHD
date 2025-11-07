@@ -24,6 +24,7 @@ ARCHITECTURE behavior OF Execute IS
 	SIGNAL ALU_output_mux : STD_LOGIC_VECTOR(31 DOWNTO 0);
 	SIGNAL F0, F1, F2, F3 : STD_LOGIC;
 	SIGNAL SUB_Result : STD_LOGIC_VECTOR(31 DOWNTO 0);
+	SIGNAL Shift_extend : STD_LOGIC_VECTOR(31 DOWNTO 0);  -- NOVO: Para shift left do offset
 	
 BEGIN
 	-- MUX para selecionar B (Read_data_2 ou Sign_extend)
@@ -89,9 +90,13 @@ BEGIN
 	-- Flag Zero: ativa quando o resultado da ALU é zero
 	Zero <= '1' WHEN ALU_output_mux = X"00000000" ELSE '0';
 	
-	-- Soma para cálculo do endereço de desvio: PCInc + Sign_extend
+	-- CORREÇÃO: Shift left de 2 bits no offset (multiplica por 4)
+	-- No MIPS, o offset é em palavras (4 bytes), mas PC é em bytes
+	Shift_extend <= Sign_extend(29 downto 0) & "00";
+	
+	-- Soma para cálculo do endereço de desvio: PCInc + (Sign_extend << 2)
 	-- (deslocamento relativo ao PC para BEQ)
-	ADDResult <= PCInc + Sign_extend;
+	ADDResult <= PCInc + Shift_extend;
 	
 END behavior;
 
